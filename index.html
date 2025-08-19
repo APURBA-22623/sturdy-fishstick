@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Bio •  Apurba</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+
+    <style>
+      :root {
+        --bg-1: #0f172a; /* slate-900 */
+        --bg-2: #1e293b; /* slate-800 */
+        --bg-3: #0b132b; /* deep navy */
+        --bg-4: #1a1f2c; /* charcoal */
+        --text: #e5e7eb; /* gray-200 */
+        --muted: #94a3b8; /* slate-400 */
+        --accent: #22d3ee; /* cFyan-400 */
+        --accent-2: #a78bfa; /* violet-400 */
+        --card: rgba(255, 255, 255, 0.06);
+        --card-border: rgba(255, 255, 255, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--text);
+        background: linear-gradient(-45deg, var(--bg-1), var(--bg-2), var(--bg-3), var(--bg-4));
+        background-size: 400% 400%;
+        animation: gradientShift 18s ease infinite;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      .card {
+        width: 100%;
+        max-width: 980px;
+        background: radial-gradient(1200px 600px at 10% 10%, rgba(34, 211, 238, 0.08), transparent 45%),
+                    radial-gradient(900px 500px at 90% 90%, rgba(167, 139, 250, 0.08), transparent 40%),
+                    var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Lighting spotlight overlay that follows the mouse */
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(600px 300px at var(--mx, 50%) var(--my, 50%),
+                    rgba(255, 255, 255, 0.08),
+                    rgba(34, 211, 238, 0.10) 25%,
+                    rgba(167, 139, 250, 0.08) 45%,
+                    transparent 65%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        mix-blend-mode: screen;
+      }
+      .card:hover::before { opacity: 1; }
+
+      .header {
+        display: grid;
+        grid-template-columns: 120px 1fr auto;
+        gap: 20px;
+        padding: 28px 28px 8px 28px;
+        align-items: center;
+      }
+
+      .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(34, 211, 238, 0.15), rgba(167, 139, 250, 0.15));
+        border: 1px solid var(--card-border);
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        font-size: 34px;
+        letter-spacing: 1px;
+        color: var(--text);
+      }
+
+      .meta h1 {
+        margin: 0;
+        font-size: 32px;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+
+      .meta p {
+        margin: 6px 0 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .love-coding {
+        margin-top: 10px;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .typewriter {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid var(--accent);
+        width: 0;
+        animation: typing 3s steps(20, end) 0.5s forwards, blink 0.9s step-end infinite, glow 2.2s ease-in-out 3.6s infinite alternate;
+      }
+
+      @keyframes typing { to { width: 12ch; } }
+      @keyframes blink { 50% { border-color: transparent; } }
+      @keyframes glow {
+        from { text-shadow: 0 0 6px rgba(34, 211, 238, 0.35), 0 0 12px rgba(167, 139, 250, 0.25); }
+        to   { text-shadow: 0 0 16px rgba(34, 211, 238, 0.55), 0 0 28px rgba(167, 139, 250, 0.35); }
+      }
+
+      /* Shaky effect on hover */
+      .avatar:hover, .meta h1:hover { animation: shake 0.6s ease-in-out; }
+      @keyframes shake {
+        10%, 90% { transform: translateX(-1px); }
+        20%, 80% { transform: translateX(2px); }
+        30%, 50%, 70% { transform: translateX(-4px); }
+        40%, 60% { transform: translateX(4px); }
+      }
+
+      .links {
+        display: flex;
+        gap: 10px;
+      }
+
+      .btn {
+        appearance: none;
+        border: 1px solid var(--card-border);
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.04);
+        padding: 10px 14px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      }
+
+      .btn:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.25); }
+
+      .section {
+        padding: 8px 28px 28px 28px;
+      }
+
+      .section h2 {
+        margin: 0 0 12px 0;
+        font-size: 18px;
+        letter-spacing: 0.4px;
+        color: var(--muted);
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .about {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        line-height: 1.8;
+        color: var(--text);
+      }
+
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(80px, 1fr));
+        gap: 14px;
+      }
+
+      .skill {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--card-border);
+        border-radius: 14px;
+        padding: 16px 10px;
+        display: grid;
+        place-items: center;
+        gap: 8px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        position: relative;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .skill:hover { transform: translateY(-6px) scale(1.02); border-color: rgba(255, 255, 255, 0.25); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35), 0 0 32px rgba(34, 211, 238, 0.25), 0 0 18px rgba(167, 139, 250, 0.18); }
+
+      .skill i { font-size: 40px; }
+      .skill span { font-size: 13px; color: var(--muted); font-weight: 600; }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+      }
+
+      /* Staggered floating */
+      .skill:nth-child(1) { animation-delay: 0s; }
+      .skill:nth-child(2) { animation-delay: 0.5s; }
+      .skill:nth-child(3) { animation-delay: 1s; }
+      .skill:nth-child(4) { animation-delay: 1.5s; }
+      .skill:nth-child(5) { animation-delay: 2s; }
+      .skill:nth-child(6) { animation-delay: 2.5s; }
+
+      .footer {
+        padding: 18px 28px 28px 28px;
+        color: var(--muted);
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px dashed rgba(255, 255, 255, 0.06);
+      }
+
+      @media (max-width: 760px) {
+        .header { grid-template-columns: 80px 1fr; gap: 14px; }
+        .avatar { width: 80px; height: 80px; font-size: 22px; }
+        .links { grid-column: 1 / -1; }
+        .skills { grid-template-columns: repeat(3, minmax(80px, 1fr)); }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card" role="main">
+      <header class="header">
+        <div class="avatar" aria-hidden="true">YN</div>
+        <div class="meta">
+          <h1>Apurba</h1>
+          <p>Developer • Problem Solver • Lifelong Learner</p>
+          <p class="love-coding"><span class="typewriter">I love coding</span></p>
+        </div>
+        <nav class="links" aria-label="Profile links">
+          <a class="btn" href="#" title="GitHub">GitHub</a>
+          <a class="btn" href="#" title="LinkedIn">LinkedIn</a>
+          <a class="btn" href="mailto:you@example.com" title="Email">Email</a>
+        </nav>
+      </header>
+
+      <section class="section">
+        <h2>About</h2>
+        <div class="about">
+          <p>
+            Hi, I'm <strong>Apurba</strong>. I'm passionate about building clean, performant software and turning ideas into reliable, delightful experiences. I enjoy solving problems, learning new tools, and collaborating on meaningful projects.
+          </p>
+          <p>
+            Recently I've been focusing on strengthening my foundations in systems and web development while practicing algorithms and data structures. I'm always open to contributing to new projects and learning from others.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="skills-title">
+        <h2 id="skills-title">Languages</h2>
+        <div class="skills" role="list">
+          <div class="skill" role="listitem" title="C">
+            <i class="devicon-c-plain colored" aria-hidden="true"></i>
+            <span>C</span>
+          </div>
+          <div class="skill" role="listitem" title="C++">
+            <i class="devicon-cplusplus-plain colored" aria-hidden="true"></i>
+            <span>C++</span>
+          </div>
+          <div class="skill" role="listitem" title="C#">
+            <i class="devicon-csharp-plain colored" aria-hidden="true"></i>
+            <span>C#</span>
+          </div>
+          <div class="skill" role="listitem" title="JavaScript">
+            <i class="devicon-javascript-plain colored" aria-hidden="true"></i>
+            <span>JavaScript</span>
+          </div>
+          <div class="skill" role="listitem" title="HTML5">
+            <i class="devicon-html5-plain colored" aria-hidden="true"></i>
+            <span>HTML</span>
+          </div>
+          <div class="skill" role="listitem" title="CSS3">
+            <i class="devicon-css3-plain colored" aria-hidden="true"></i>
+            <span>CSS</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        <span>Made with <span aria-label="love" title="love">❤</span> and curiosity</span>
+        <span>© <span id="year"></span> Apurba!</span>
+      </div>
+    </main>
+
+    <script>
+      // Set current year and optionally generate initials from the name
+      (function () {
+        var yearEl = document.getElementById("year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        var nameEl = document.querySelector(".meta h1");
+        var avatarEl = document.querySelector(".avatar");
+        if (nameEl && avatarEl) {
+          var name = nameEl.textContent.trim();
+          if (name && name !== "Apurba!") {
+            var parts = name.split(/\s+/).filter(Boolean);
+            var initials = parts.slice(0, 2).map(function (p) { return p[0].toUpperCase(); }).join("");
+            if (initials) avatarEl.textContent = initials;
+            document.title = "My Bio • " + name;
+          }
+        }
+      })();
+      // Lighting spotlight follow
+      (function () {
+        var card = document.querySelector('.card');
+        if (!card) return;
+        card.addEventListener('mousemove', function (e) {
+          var rect = card.getBoundingClientRect();
+          var x = e.clientX - rect.left;
+          var y = e.clientY - rect.top;
+          card.style.setProperty('--mx', x + 'px');
+          card.style.setProperty('--my', y + 'px');
+        });
+        card.addEventListener('mouseleave', function () {
+          card.style.removeProperty('--mx');
+          card.style.removeProperty('--my');
+        });
+      })();
+    </script>
+  </body>
+  </html>
+
+
